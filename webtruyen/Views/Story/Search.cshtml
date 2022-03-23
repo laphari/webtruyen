@@ -1,0 +1,52 @@
+﻿@model IEnumerable<webtruyen.ModelFake.Gettacgia>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div style="display:flex;margin-top:15px">
+    <div>
+        <a href="/Story/Viewcreate/" class="btn btn-danger btn-sm" style="color:white"><i class="fa-solid fa-circle-plus"></i></a>
+    </div>
+    <div>
+        <form action="/Story/Search" method="post">
+            <div style="display:flex">
+                <div>
+                    <input type="search" placeholder="Tìm Kiếm" style="width:300px;height:30px;border:1px solid red;outline:none;margin-left:675px" name="search" />
+                </div>
+                <div style="margin-left:-33px">
+                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div style="margin-top:10px">
+    <table class="table">
+        <tr>
+            <th>
+                Tên sách
+            </th>
+            <th>
+                Ảnh
+            </th>
+            <th>
+                Trạng thái
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.StoryName
+                </td>
+                <td>
+                    <img src=" @item.StoryImage " width="200px" height="200px" />
+                </td>
+                <td>
+                    @item.StoryIsDone
+                </td>
+            </tr>
+        }
+    </table>
+</div>

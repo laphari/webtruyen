@@ -1,0 +1,99 @@
+﻿@model IEnumerable<webtruyen.ModelFake2.Getcateandanbia>
+@{
+    ViewBag.Title = "Index";
+    var totallpagesize = int.Parse(ViewData["totallpage"].ToString());
+    Layout = "~/Views/Shared/_nav.cshtml";
+}
+<div>
+    <form action="/Anhbia/Search" method="post">
+        <div style="display:flex">
+            <div>
+                <input type="search" placeholder="Tìm Kiếm" style="width:300px;height:30px;border:1px solid red;outline:none;margin-left:675px" name="search" />
+            </div>
+            <div style="margin-left:-33px">
+                <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+    </form>
+</div>
+<a href="/Anhbia/Viewcreate" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-trash-alt"></i></a>
+<table class="table">
+    <tr>
+        <th>
+            Mã bìa
+        </th>
+        <th>
+            Trích dẫn trong sách
+        </th>
+        <th>
+            Ảnh
+        </th>
+        <th>
+            Ngày tạo
+        </th>
+        <th>
+            Thể loại
+        </th>
+        <th>
+            Thao tác
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Nameanhbia
+            </td>
+            <td>
+                @item.StoryName
+            </td>
+            <td>
+                <img src=" @item.Imgbia" width="200px" height="200px" />
+            </td>
+            <td>
+                @item.ngaytao
+            </td>
+            <td>
+                @item.CategoryName
+            </td>
+            <td>
+                <a href="/Anhbia/Delete?id=@item.Idanhbia" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-trash-alt"></i></a>
+                <a href="/Anhbia/Detail?id=@item.Idanhbia" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-info"></i></a>
+                <a href="/Anhbia/Viewupdate?id=@item.Idanhbia" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-info"></i></a>
+            </td>
+        </tr>
+    }
+</table>
+@if (ViewBag.Danglen == true)
+{
+    <script>
+        window.addEventListener('load', (event) => {
+            Swal.fire(
+                'Bạn đã thêm thành công ảnh bìa',
+                'bấm vào đây',
+                'success'
+            )
+        })
+    </script>
+}
+
+@if (ViewBag.updatee == true)
+{
+    <script>
+        window.addEventListener('load', (event) => {
+            Swal.fire(
+                'Bạn đã cập nhật thành công ảnh bìa',
+                'bấm vào đây',
+                'success'
+            )
+        })
+    </script>
+}
+<ul class="pagination" style="margin-left:50%;margin-top:20px">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    @for (var i = 1; i <= totallpagesize; i++)
+    {
+        <li class="page-item"><a class="page-link" href="/Anhbia/Index?page=@i">@i</a></li>
+    }
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+</ul>

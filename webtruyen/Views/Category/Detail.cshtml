@@ -1,0 +1,11 @@
+﻿@model webtruyen.Models.Category
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h1>@Model.CategoryId</h1>
+<h2>@Model.CategoryName</h2>
+<div style="margin-left:30px">
+    @Html.Raw(Model.CategoryDesctiption)
+</div>
+

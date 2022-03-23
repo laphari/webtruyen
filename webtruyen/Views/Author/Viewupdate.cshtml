@@ -1,0 +1,30 @@
+﻿@model webtruyen.Models.Author
+@{
+    ViewBag.Title = "Viewupdate";
+}
+
+<h2>Viewupdate</h2>
+<div style="margin-left:20%;background-color:sandybrown;width:50%">
+    <form action="/Author/Update" method="post" enctype="multipart/form-data">
+        <lable>Mã tác giả</lable>
+        <input type="text" class="form-control" name="matacgia" id="theloai" value="@Model.AuthorId" readonly />
+        <label>Tên tác giả</label>
+        <input type="text" class="form-control" name="tentacgia" id="theloai" value="@Model.AuthorName" />
+        <label>Ảnh</label>
+        <input type="file" class="form-control" name="anhtacgia" />
+        <label>Năm sinh</label>
+        <input type="date" class="form-control" name="namsinh" value="@Model.AuthorDateOfBirth" />
+        <br />
+        <label>Mô tả</label>
+        <textarea name="motatacgia" class="form-control">
+        
+        </textarea>
+        <button type="submit" class="btn-danger" onclick="clickk()">Tạo</button>
+    </form>
+</div>
+<script src="~/Content/Ckeditor/ckeditor/ckeditor.js">
+
+</script>
+<script>
+    CKEDITOR.replace('motatacgia')
+</script>

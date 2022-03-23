@@ -1,0 +1,35 @@
+﻿@model webtruyen.Models.Category
+@{
+    ViewBag.Title = "Viewupdate";
+}
+
+<h2>Viewupdate</h2>
+
+<div style="margin-left:20%;background-color:sandybrown;width:50%">
+    <form action="/Category/Create" method="post" enctype="multipart/form-data">
+        <label>ID Thể Loại</label>
+        <label>Thể Loại</label>
+        <input type="text" class="form-control" name="tentheloai" />
+        <label>Ảnh</label>
+        <input type="file" class="form-control" name="anhtheloai" />
+        <br />
+        <label>Ảnh Hot</label>
+        <input type="file" class="form-control" name="anhhot" />
+        <br />
+        <label>Trạng thái</label>
+        <input type="text" class="form-control" name="trangthaii" />
+        <label>Năm phát hành</label>
+        <input type="text" class="form-control" name="namphathanhh" />
+        <label>Mô tả</label>
+        <textarea name="motatheloai" class="form-control">
+        
+        </textarea>
+        <button type="submit" class="btn-danger" onclick="clickk()">Tạo</button>
+    </form>
+</div>
+<script src="~/Content/Ckeditor/ckeditor/ckeditor.js">
+
+</script>
+<script>
+    CKEDITOR.replace('motatheloai')
+</script>

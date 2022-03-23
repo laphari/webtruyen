@@ -1,0 +1,61 @@
+﻿@model webtruyen.ModelFake1.Getstory
+@{
+    ViewBag.Title = "Viewupdate";
+}
+
+<h2>Viewupdate</h2>
+<div style="margin-left:20%;background-color:sandybrown;width:50%">
+    <form action="/Story/Update" method="post" enctype="multipart/form-data">
+        <label>Mã Sách</label>
+        <input type="text" class="form-control" name="masach" id="theloai" readonly value="@Model.StoryId" />
+        <label>Tên Sách</label>
+        <input type="text" class="form-control" name="tensach" id="theloai" value="@Model.StoryName" />
+        <label>Ảnh</label>
+        <input type="file" class="form-control" name="anhsach" />
+        <label>Trạng thái</label>
+        <input type="text" class="form-control" name="trangthai" value="@Model.StoryIsDone" />
+        <label>Tác giả</label>
+        <br />
+        <select name="gettacgia1">
+            @foreach (var item in @ViewData["demo3"] as List<webtruyen.Models.Author>)
+            {
+
+                <option @(item.AuthorId == Model.AuthorId ? "selected" : "" ) value="@item.AuthorId">@item.AuthorName</option>
+            }
+        </select>
+        <br />
+        <label>Tóm tắt sách</label>
+        <br />
+        <textarea name="motasach" class="form-control">
+        
+        </textarea>
+        <select name="theloai1">
+            @foreach (var item in @ViewData["demo4"] as List<webtruyen.Models.Category>)
+            {
+
+                <option @(item.CategoryId == Model.CategoryId ? "selected" : "" ) value="@item.CategoryId">@item.CategoryName</option>
+            }
+        </select>
+        <br />
+        <label>Ngày tạo</label>
+        <br />
+        <input type="date" class="form-control" name="ngaytao" />
+        <label>Ngày sửa</label>
+        <input type="date" class="form-control" name="ngaysua" />
+        <label>Ngày xóa</label>
+        <input type="date" class="form-control" name="ngayxoa" />
+        <label>Nxb</label>
+        <input type="text" class="form-control" name="nhaxuatban" />
+        <label>Ngôn ngữ</label>
+        <input type="text" class="form-control" name="ngonngutruyen" />
+        <label>Năm sx</label>
+        <input type="text" class="form-control" name="namsxtruyen" />
+        <button type="submit" class="btn-danger" onclick="clickk()">Tạo</button>
+    </form>
+</div>
+<script src="~/Content/Ckeditor/ckeditor/ckeditor.js">
+
+</script>
+<script>
+    CKEDITOR.replace('motasach')
+</script>

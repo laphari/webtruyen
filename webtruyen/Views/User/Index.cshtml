@@ -1,0 +1,142 @@
+﻿@model IEnumerable<webtruyen.ModelFake10.getidd>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_nav.cshtml";
+}
+
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://kenh14cdn.com/thumb_w/660/203336854389633024/2020/11/20/fb-2-16058649215401915560277.png" alt="Los Angeles" width="98%" height="530px" style="margin-left:18px">
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="carousel-item">
+                <img src="@item.Imgbia" alt="Los Angeles" width="98%" height="530px" style="margin-left:18px">
+            </div>
+        }
+    </div>
+</div>
+<div>
+    <div>
+        <div style="margin-left:18px;margin-top:20px">
+            <p style="font-size:30px;color:red;">Truyện Nổi Bật</p>
+        </div>
+    </div>
+</div>
+ <div style="display:flex">
+    @foreach (var item in @ViewData["demo16"] as List<webtruyen.Modelgethot.Gethot>)
+    {
+                
+        <div>
+            <div>
+                <img src="@item.imghot" width="399px" height="330px" style="margin-left:18px" />
+            </div>
+            <div style="position: relative; top:-330px; background-color: red;margin-left:18px;width:80px">
+                <p style="color:white;margin-left:9px">Nổi bật</p>
+            </div>
+            <div style="position: relative; top: -70px; background-color: blue; margin-left:18px;width:150px">
+                <p style="color:white;margin-left:9px;font-size:20px">@item.trangthai</p>
+            </div>
+            <div style="position: relative; top:-70px;margin-left:18px;border:1px solid with;width:340px">
+                <p style="font-size:20px">@item.StoryName</p>
+            </div>
+            <div style="position: relative; top:-50px;margin-left:18px">
+                <p style="color:red;font-size:18px">Tác giả: @item.AuthorName</p>
+            </div>
+            <div style="position: relative; top:-50px;margin-left:18px">
+                <p style="color:gray;font-size:15px">@item.namphathanh</p>
+            </div>
+        </div>
+  }
+</div>
+
+ <div style="display:flex">
+     <div>
+         <div style="margin-left:18px;margin-top:20px">
+            <p style="font-size:30px;color:red;">Truyện Ngắn</p>
+         </div>
+         <div>
+
+             @foreach (var item in @ViewData["demo17"] as List<webtruyen.Modeltruyenngan.truyenngan>)
+             {
+             <div style="display:flex;margin-top:20px">
+                 <div>
+                     <img src="@item.StoryImage" style="width:150px;height:250px;margin-left:18px" />
+                 </div>
+                 <div>
+                     <div>
+                         <p style="margin-left: 10px; color: #175F9E;">@item.StoryName</p>
+                     </div>
+                     <div>
+                         <p style="margin-left: 10px; color: #175F9E;">Tác giả: @item.AuthorName</p>
+                     </div>
+                     <div>
+                         <p style="margin-left: 10px; color: #175F9E;">NXB: @item.Nxb</p>
+                     </div>
+                     <div>
+                         <p style="margin-left: 10px; color: #175F9E;">Ngôn ngữ: @item.Ngonngu</p>
+                     </div>
+                     <div>
+                         <p style="margin-left: 10px; color: #175F9E;">Nsx: @item.namsx</p>
+                     </div>
+                 </div>
+             </div>
+                     }
+             </div>
+     </div>
+     <div>
+         <div style="margin-left:190px;margin-top:20px">
+             <p style="font-size:30px;color:red;">Truyện Dài</p>
+         </div>
+         <div>
+
+             @foreach (var item in @ViewData["demo18"] as List<webtruyen.Modeltruyendai.truyendai>)
+             {
+                 <div style="display:flex;margin-top:20px">
+                     <div>
+                         <img src="@item.StoryImage" style="width:150px;height:250px;margin-left:190px" />
+                     </div>
+                     <div>
+                         <div>
+                             <p style="margin-left: 10px; color: #175F9E;">@item.StoryName</p>
+                         </div>
+                         <div>
+                             <p style="margin-left: 10px; color: #175F9E;">Tác giả: @item.AuthorName</p>
+                         </div>
+                         <div>
+                             <p style="margin-left: 10px; color: #175F9E;">NXB: @item.Nxb</p>
+                         </div>
+                         <div>
+                             <p style="margin-left: 10px; color: #175F9E;">Ngôn ngữ: @item.Ngonngu</p>
+                         </div>
+                         <div>
+                             <p style="margin-left: 10px; color: #175F9E;">Nsx: @item.namsx</p>
+                         </div>
+                     </div>
+                 </div>
+             }
+         </div>
+     </div>
+     <div style="margin-top:15px">
+         <div style="margin-left:200px;margin-top:20px">
+             <p style="font-size:30px;color:red;">Trích Dẫn Hay</p>
+         </div>
+         @foreach (var item in @ViewData["demo19"] as List<webtruyen.Modeltrichdan.trichdan>)
+         {
+             <div>
+                 <img src="@item.StoryImage" style="width:420px;height:523px;margin-left:200px" />
+             </div>
+         }
+
+     </div>
+ </div>

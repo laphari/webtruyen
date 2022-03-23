@@ -1,0 +1,45 @@
+﻿@model IEnumerable<webtruyen.Modelfake5.getcateandst>
+@{
+    ViewBag.Title = "Viewcreate";
+}
+
+<h2>Viewcreate</h2>
+<div style="margin-left:20%;background-color:sandybrown;width:50%">
+    <form action="/Anhbia/Create" method="post" enctype="multipart/form-data">
+        <label>Mã bìa</label>
+        <input type="text" class="form-control" name="tenanhbia" />
+        <label>Trích dẫn</label>
+        <br />
+        <select name="trichdan">
+            @foreach (var item in @ViewData["demo9"] as List<webtruyen.Models.Story>)
+            {
+                <option value="@item.StoryId">@item.StoryName</option>
+            }
+        </select>
+        <br />
+        <label>Ảnh</label>
+        <input type="file" class="form-control" name="anhbia" />
+        <label>Ngày Tạo</label>
+        <input type="date" class="form-control" name="ngaytaoanhbia" />
+        <label>Thể loại</label>
+        <br />
+        <select name="theloaibia">
+            @foreach (var item in @ViewData["demo10"] as List<webtruyen.Models.Category>)
+            {
+                <option value="@item.CategoryId">@item.CategoryName</option>
+            }
+        </select>
+        <br />
+        <label>Mô tả</label>
+        <textarea name="motaanhbia" class="form-control">
+        
+        </textarea>
+        <button type="submit" class="btn-danger" onclick="clickk()">Tạo</button>
+    </form>
+</div>
+<script src="~/Content/Ckeditor/ckeditor/ckeditor.js">
+
+</script>
+<script>
+    CKEDITOR.replace('motaanhbia')
+</script>

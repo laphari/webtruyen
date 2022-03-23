@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Mã bìa
+        </th>
+        <th>
+            Ảnh
+        </th>
+    
+       
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Nameanhbia
+            </td>
+            <td>
+                <img src=" @item.Imgbia" width="200px" height="200px" />
+            </td>
+        </tr>
+    }
+</table>

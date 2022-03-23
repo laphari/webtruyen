@@ -1,0 +1,58 @@
+﻿@model IEnumerable<webtruyen.Modelgetauandcate.Getauandca>
+@{
+    ViewBag.Title = "Viewcreate";
+}
+<h2>Viewcreate</h2>
+<div style="margin-left:20%;background-color:sandybrown;width:50%">
+    <form action="/Story/Create" method="post" enctype="multipart/form-data">
+        <label>Tên Sách</label>
+        <input type="text" class="form-control" name="tensach" id="theloai" />
+        <label>Ảnh</label>
+        <input type="file" class="form-control" name="anhsach" />
+        <label>Trạng thái</label>
+        <input type="text" class="form-control" name="trangthai" />
+        <label>Tác giả</label>
+        <br />
+        <select name="gettacgia">
+            @foreach (var item in @ViewData["demo"] as List<webtruyen.Models.Author>)
+            {
+                <option value="@item.AuthorId">@item.AuthorName</option>
+            }
+        </select>
+        <br />
+        <label>Tóm tắt sách</label>
+        <br />
+        <textarea name="motasach" class="form-control">
+        
+        </textarea>
+        <label>Thể loại</label>
+        <br />
+        <select name="theloai">
+            @foreach (var item in @ViewData["demo1"] as List<webtruyen.Models.Category>)
+            {
+                <option value="@item.CategoryId">@item.CategoryName</option>
+            }
+        </select>
+        <br />
+        <label>Ngày tạo</label>
+        <input type="date" class="form-control" name="ngaytao" />
+        <label>Ngày sửa</label>
+        <input type="date" class="form-control" name="ngaysua" />
+        <label>Ngày xóa</label>
+        <input type="date" class="form-control" name="ngayxoa" />
+        <label>Nxb</label>
+        <input type="text" class="form-control" name="nhaxuatban" />
+        <label>Ngôn ngữ</label>
+        <input type="text" class="form-control" name="ngonngutruyen" />
+        <label>Năm sx</label>
+        <input type="text" class="form-control" name="namsxtruyen" />
+        <button type="submit" class="btn-danger" onclick="clickk()">Tạo</button>
+    </form>
+</div>
+<script src="~/Content/Ckeditor/ckeditor/ckeditor.js">
+
+</script>
+<script>
+    CKEDITOR.replace('motasach')
+</script>
+

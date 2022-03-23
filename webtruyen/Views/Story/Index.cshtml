@@ -1,0 +1,94 @@
+﻿@model IEnumerable<webtruyen.ModelFake.Gettacgia>
+@{
+    ViewBag.Title = "Index";
+    var totallpagesize = int.Parse(ViewData["totallpage"].ToString());
+    Layout = "~/Views/Shared/_AdminLte.cshtml";
+}
+
+<h2>Index</h2>
+<div style="display:flex;margin-top:15px">
+<div>
+<a href="/Story/Viewcreate/" class="btn btn-danger btn-sm" style="color:white"><i class="fa-solid fa-circle-plus"></i></a>
+</div>
+ <div>
+    <form action="/Story/Search" method="post">
+        <div style="display:flex">
+            <div>
+                <input type="search" placeholder="Tìm Kiếm" style="width:300px;height:30px;border:1px solid red;outline:none;margin-left:675px" name="search" />
+            </div>
+            <div style="margin-left:-33px">
+            <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+<div style="margin-top:10px">
+<table class="table">
+    <tr>
+        <th>
+            Tên sách
+        </th>
+        <th>
+            Ảnh
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th>
+            Tác giả
+        </th>
+        <th>
+            Thể loại
+        </th>
+        <th>
+            Trạng thái
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.StoryName
+            </td>
+            <td>
+                <img src=" @item.StoryImage " width="200px" height="200px" />
+            </td>
+            <td>
+                @item.StoryIsDone
+            </td>
+            <td>
+                @item.AuthorName
+            </td>
+            <td>
+                @item.CategoryName
+            </td>
+            <td>
+                <a href="/Story/Remove?id=@item.ID " class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-trash-alt"></i></a>
+                <a href="/Story/Detail?id=@item.ID " class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-archway"></i></a>
+                <a href="/Story/Viewupdate?id=@item.ID" class="btn btn-danger btn-sm" style="color:white"><i class="fas fa-edit"></i></a>
+            </td>
+        </tr>
+    }
+</table>
+</div>
+<ul class="pagination" style="margin-left:45%;margin-top:20px">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    @for (var i = 1; i <= totallpagesize; i++)
+    {
+        <li class="page-item"><a class="page-link" href="/Story/Index?page=@i">@i</a></li>
+    }
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+</ul>
+@if (ViewBag.Thongdiep == true)
+{
+    <script>
+        window.addEventListener('load', (event) => {
+            Swal.fire(
+                'Bạn đã thêm thành công truyện',
+                'bấm vào đây',
+                'success'
+            )
+        })
+    </script>
+}

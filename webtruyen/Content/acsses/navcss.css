@@ -1,0 +1,24 @@
+﻿
+.navtieude {
+    background-color: red;
+    display: flex;
+    width: 100%;
+    height: 100px;
+}
+.navimg>img
+{
+      width:100px
+}
+
+/*.navimg>img
+{
+    width:30px
+}
+.navcon
+{
+    display:none;
+}
+.navcha:hover >.navcon
+{
+    display: block;
+}*/
